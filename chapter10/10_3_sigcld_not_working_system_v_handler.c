@@ -24,7 +24,7 @@ static void sig_cld(int signo)
 	int status;
 
 	printf("SIGCLD received\n");
-	if (signal(sigcld, sig_cld) == SIG_ERR)
+	if (signal(SIGCLD, sig_cld) == SIG_ERR)
 		perror("signal error");
 	if ((pid = wait(&status)) < 0)
 		perror("wait error");
