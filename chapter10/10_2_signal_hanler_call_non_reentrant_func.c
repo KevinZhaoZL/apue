@@ -1,14 +1,14 @@
 /**
  * 信号处理中调用不可重入函数
  */
-#include "../inclue/apue.h"
+#include "../include/apue.h"
 #include <pwd.h>
 
 static void my_alarm(int signo)
 {
 	struct passwd *rootptr;
 	printf("in signal handler\n");
-	if ((rootptr == getpwnam("root")) == NULL) 
+	if ((rootptr = getpwnam("root")) == NULL) 
 		err_sys("getpwnam(root) error");
 	alarm(1);
 }
