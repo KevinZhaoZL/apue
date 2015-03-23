@@ -38,8 +38,8 @@ int csopen(char *name, int oflag) {
 	iov[2].iov_base = buf;
 	iov[2].iov_len = strlen(buf) + 1; /* + 1 for null at end of buf */
 	len = iov[0].len + iov[1].len + iov[2].len;
-	if (write(fd[0], &iov[0], 3) != len) 
-		err_sys("writeev error");
+	if (writev(fd[0], &iov[0], 3) != len) 
+		err_sys("writev error");
 	/* read descriptor, returned errors handled by write() */
 	return (recv_fd(fd[0], write));
 }
